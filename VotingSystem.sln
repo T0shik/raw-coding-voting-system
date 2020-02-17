@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.29609.76
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sandbox", "Sandbox\Sandbox.csproj", "{026AEEDB-F405-4802-859A-BD61C53017B2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VotingSystem.Tests", "VotingSystem.Tests\VotingSystem.Tests.csproj", "{CB1F19BA-63CB-4C0B-B8B5-D002E4794E99}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VotingSystem.Tests", "VotingSystem.Tests\VotingSystem.Tests.csproj", "{CB1F19BA-63CB-4C0B-B8B5-D002E4794E99}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sandbox.EFCore", "Sandbox.EFCore\Sandbox.EFCore.csproj", "{1900F806-FDBE-4CA1-8328-765A1B7A7EBD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{CB1F19BA-63CB-4C0B-B8B5-D002E4794E99}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CB1F19BA-63CB-4C0B-B8B5-D002E4794E99}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CB1F19BA-63CB-4C0B-B8B5-D002E4794E99}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1900F806-FDBE-4CA1-8328-765A1B7A7EBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1900F806-FDBE-4CA1-8328-765A1B7A7EBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1900F806-FDBE-4CA1-8328-765A1B7A7EBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1900F806-FDBE-4CA1-8328-765A1B7A7EBD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
