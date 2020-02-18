@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
+using VotingSystem.Models;
 using Xunit;
 using static Xunit.Assert;
 
@@ -62,44 +62,5 @@ namespace VotingSystem.Tests
 
             Equal(_request.Description, poll.Description);
         }
-    }
-
-    public interface IVotingPollFactory
-    {
-        VotingPoll Create(VotingPollFactory.Request request);
-    }
-
-    public class VotingPollFactory
-    {
-        public class Request
-        {
-            public string Title { get; set; }
-            public string Description { get; set; }
-            public string[] Names { get; set; }
-        }
-
-        public VotingPoll Create(Request request)
-        {
-            if (request.Names.Length < 2) throw new ArgumentException();
-
-            return new VotingPoll
-            {
-                Title = request.Title,
-                Description = request.Description,
-                Counters = request.Names.Select(name => new Counter { Name = name })
-            };
-        }
-    }
-
-    public class VotingPoll
-    {
-        public VotingPoll()
-        {
-            Counters = Enumerable.Empty<Counter>();
-        }
-
-        public string Title { get; set; }
-        public string Description { get; set; }
-        public IEnumerable<Counter> Counters { get; set; }
     }
 }
