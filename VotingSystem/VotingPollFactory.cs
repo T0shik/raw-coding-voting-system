@@ -21,7 +21,7 @@ namespace VotingSystem
             {
                 Title = request.Title,
                 Description = request.Description,
-                Counters = request.Names.Select(name => new Counter { Name = name })
+                Counters = request.Names.Select(name => new Counter { Name = name }).ToList()
             };
         }
     }

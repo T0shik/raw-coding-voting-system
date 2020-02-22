@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 
 namespace VotingSystem.Models
 {
@@ -7,11 +6,11 @@ namespace VotingSystem.Models
     {
         public VotingPoll()
         {
-            Counters = Enumerable.Empty<Counter>();
+            Counters = new List<Counter>();
         }
 
         public string Title { get; set; }
         public string Description { get; set; }
-        public IEnumerable<Counter> Counters { get; set; }
+        public ICollection<Counter> Counters { get; set; }
     }
 }
