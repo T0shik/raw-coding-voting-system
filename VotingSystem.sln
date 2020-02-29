@@ -9,17 +9,19 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VotingSystem.Tests", "Votin
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sandbox.EFCore", "Sandbox.EFCore\Sandbox.EFCore.csproj", "{1900F806-FDBE-4CA1-8328-765A1B7A7EBD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VotingSystem", "VotingSystem\VotingSystem.csproj", "{61E5D45E-357B-4AFA-8B30-8D8E18682FC0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VotingSystem", "VotingSystem\VotingSystem.csproj", "{61E5D45E-357B-4AFA-8B30-8D8E18682FC0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VotingSystem.Application", "VotingSystem.Application\VotingSystem.Application.csproj", "{FF26F66B-1BF3-4C9B-A4A0-6B4B4B2E63C5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VotingSystem.Application", "VotingSystem.Application\VotingSystem.Application.csproj", "{FF26F66B-1BF3-4C9B-A4A0-6B4B4B2E63C5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VotingSystem.Applicaiton.Tests", "VotingSystem.Applicaiton.Tests\VotingSystem.Applicaiton.Tests.csproj", "{BB5E7960-9D59-4902-B8F3-E9E15600C0C9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VotingSystem.Applicaiton.Tests", "VotingSystem.Applicaiton.Tests\VotingSystem.Applicaiton.Tests.csproj", "{BB5E7960-9D59-4902-B8F3-E9E15600C0C9}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{D925054C-D483-4D95-AB0B-630DA117ABF0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{A9E25AFE-C226-4EAE-BB13-91778F28B4D3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VotingSystem.Database.Tests", "VotingSystem.Database.Tests\VotingSystem.Database.Tests.csproj", "{BC59E9E8-55FA-4A74-B019-FE2ECFBB306A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VotingSystem.Database.Tests", "VotingSystem.Database.Tests\VotingSystem.Database.Tests.csproj", "{BC59E9E8-55FA-4A74-B019-FE2ECFBB306A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VotingSystem.Database", "VotingSystem.Database\VotingSystem.Database.csproj", "{B52D5C51-D4A7-4B5F-9A0D-42A31C97300F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -55,6 +57,10 @@ Global
 		{BC59E9E8-55FA-4A74-B019-FE2ECFBB306A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BC59E9E8-55FA-4A74-B019-FE2ECFBB306A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BC59E9E8-55FA-4A74-B019-FE2ECFBB306A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B52D5C51-D4A7-4B5F-9A0D-42A31C97300F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B52D5C51-D4A7-4B5F-9A0D-42A31C97300F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B52D5C51-D4A7-4B5F-9A0D-42A31C97300F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B52D5C51-D4A7-4B5F-9A0D-42A31C97300F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -65,6 +71,7 @@ Global
 		{FF26F66B-1BF3-4C9B-A4A0-6B4B4B2E63C5} = {D925054C-D483-4D95-AB0B-630DA117ABF0}
 		{BB5E7960-9D59-4902-B8F3-E9E15600C0C9} = {A9E25AFE-C226-4EAE-BB13-91778F28B4D3}
 		{BC59E9E8-55FA-4A74-B019-FE2ECFBB306A} = {A9E25AFE-C226-4EAE-BB13-91778F28B4D3}
+		{B52D5C51-D4A7-4B5F-9A0D-42A31C97300F} = {D925054C-D483-4D95-AB0B-630DA117ABF0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B4451F26-DC7F-47A8-B95E-07243B095D4D}
