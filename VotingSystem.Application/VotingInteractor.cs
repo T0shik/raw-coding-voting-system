@@ -3,11 +3,11 @@ using VotingSystem.Models;
 
 namespace VotingSystem.Applicaiton
 {
-    public class VotingIntoractor
+    public class VotingInteractor
     {
         private readonly IVotingSystemPersistance _persistance;
 
-        public VotingIntoractor(IVotingSystemPersistance persistance)
+        public VotingInteractor(IVotingSystemPersistance persistance)
         {
             _persistance = persistance;
         }

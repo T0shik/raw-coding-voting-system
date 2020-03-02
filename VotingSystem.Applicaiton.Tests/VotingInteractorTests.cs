@@ -5,15 +5,15 @@ using Xunit;
 
 namespace VotingSystem.Applicaiton.Tests
 {
-    public class VotingIntoractorTests
+    public class VotingInteractorTests
     {
         private readonly Mock<IVotingSystemPersistance> _mockPersistance = new Mock<IVotingSystemPersistance>();
-        private readonly VotingIntoractor _intoractor;
+        private readonly VotingInteractor _interactor;
         private readonly Vote _vote = new Vote { UserId = "user", CounterId = 1 };
 
-        public VotingIntoractorTests()
+        public VotingInteractorTests()
         {
-            _intoractor = new VotingIntoractor(_mockPersistance.Object);
+            _interactor = new VotingInteractor(_mockPersistance.Object);
         }
 
         [Fact]
@@ -21,7 +21,7 @@ namespace VotingSystem.Applicaiton.Tests
         {
             _mockPersistance.Setup(x => x.VoteExists(_vote)).Returns(false);
 
-            _intoractor.Vote(_vote);
+            _interactor.Vote(_vote);
 
             _mockPersistance.Verify(x => x.SaveVote(_vote));
         }
@@ -32,7 +32,7 @@ namespace VotingSystem.Applicaiton.Tests
         {
             _mockPersistance.Setup(x => x.VoteExists(_vote)).Returns(true);
 
-            _intoractor.Vote(_vote);
+            _interactor.Vote(_vote);
 
             _mockPersistance.Verify(x => x.SaveVote(_vote), Times.Never);
         }

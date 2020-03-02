@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using VotingSystem.Models;
 using Xunit;
 using static Xunit.Assert;
@@ -13,14 +14,14 @@ namespace VotingSystem.Tests
         [Fact]
         public void GetStatistics_IncludesCounterName()
         {
-            var statistics = new CounterManager().GetStatistics(_counter, 5);
+            var statistics = new CounterManager().GetStatistics(new[] { _counter }).First();
             Equal(CounterName, statistics.Name);
         }
 
         [Fact]
         public void GetStatistics_IncludesCounterCount()
         {
-            var statistics = new CounterManager().GetStatistics(_counter, 5);
+            var statistics = new CounterManager().GetStatistics(new[] { _counter }).First();
             Equal(5, statistics.Count);
         }
 
@@ -32,17 +33,18 @@ namespace VotingSystem.Tests
         public void GetStatistics_ShowsPercentageUpToTwoDecimalsBasedOnTotalCount(int count, int total, double expected)
         {
             _counter.Count = count;
-            var statistics = new CounterManager().GetStatistics(_counter, total);
+            var counter = new Counter { Count = total - count };
+            var statistics = new CounterManager().GetStatistics(new[] { _counter, counter }).First();
             Equal(expected, statistics.Percent);
         }
 
         [Fact]
         public void ResolveExcess_DoesntAddExcesswhenAllCountersAreEqual()
         {
-            var counter1 = new Counter { Percent = 33.33 };
-            var counter2 = new Counter { Percent = 33.33 };
-            var counter3 = new Counter { Percent = 33.33 };
-            var counters = new List<Counter> { counter1, counter2, counter3 };
+            var counter1 = new CounterStatistics { Percent = 33.33 };
+            var counter2 = new CounterStatistics { Percent = 33.33 };
+            var counter3 = new CounterStatistics { Percent = 33.33 };
+            var counters = new List<CounterStatistics> { counter1, counter2, counter3 };
 
             new CounterManager().ResolveExcess(counters);
 
@@ -57,18 +59,18 @@ namespace VotingSystem.Tests
         [InlineData(66.66, 66.68, 33.32)]
         public void ResolveExcess_AddsExcessToHighestCounter(double initial, double expected, double lowest)
         {
-            var counter1 = new Counter { Percent = initial };
-            var counter2 = new Counter { Percent = lowest };
-            var counters = new List<Counter> { counter1, counter2 };
+            var counter1 = new CounterStatistics { Percent = initial };
+            var counter2 = new CounterStatistics { Percent = lowest };
+            var counters = new List<CounterStatistics> { counter1, counter2 };
 
             new CounterManager().ResolveExcess(counters);
 
             Equal(expected, counter1.Percent);
             Equal(lowest, counter2.Percent);
 
-            var counter3 = new Counter { Percent = initial };
-            var counter4 = new Counter { Percent = lowest };
-            counters = new List<Counter> { counter4, counter3 };
+            var counter3 = new CounterStatistics { Percent = initial };
+            var counter4 = new CounterStatistics { Percent = lowest };
+            counters = new List<CounterStatistics> { counter4, counter3 };
 
             new CounterManager().ResolveExcess(counters);
 
@@ -81,10 +83,10 @@ namespace VotingSystem.Tests
         [InlineData(11.10, 11.12, 44.44)]
         public void ResolveExcess_AddsExcessToLowestCounterWhenMoreThanOneHighestCounters(double initial, double expected, double highest)
         {
-            var counter1 = new Counter { Percent = highest };
-            var counter2 = new Counter { Percent = highest };
-            var counter3 = new Counter { Percent = initial };
-            var counters = new List<Counter> { counter1, counter2, counter3 };
+            var counter1 = new CounterStatistics { Percent = highest };
+            var counter2 = new CounterStatistics { Percent = highest };
+            var counter3 = new CounterStatistics { Percent = initial };
+            var counters = new List<CounterStatistics> { counter1, counter2, counter3 };
 
             new CounterManager().ResolveExcess(counters);
 
@@ -97,9 +99,9 @@ namespace VotingSystem.Tests
         [Fact]
         public void ResolveExcess_DoesntAddExcessIfTotalPercentIs100()
         {
-            var counter1 = new Counter { Percent = 80 };
-            var counter2 = new Counter { Percent = 20 };
-            var counters = new List<Counter> { counter1, counter2 };
+            var counter1 = new CounterStatistics { Percent = 80 };
+            var counter2 = new CounterStatistics { Percent = 20 };
+            var counters = new List<CounterStatistics> { counter1, counter2 };
 
             new CounterManager().ResolveExcess(counters);
 
