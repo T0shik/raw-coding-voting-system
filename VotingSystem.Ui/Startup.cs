@@ -15,6 +15,8 @@ namespace VotingSystem.Ui
         public void ConfigureServices(IServiceCollection services)
         {
             //services.AddSingleton<Service201>();
+            services.AddSingleton<IVotingPollFactory, VotingPollFactory>();
+            services.AddControllers();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -26,18 +28,20 @@ namespace VotingSystem.Ui
 
             app.UseRouting();
 
-            app.UseMiddleware<CustomMiddleware>();
+            //app.UseMiddleware<CustomMiddleware>();
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapGet("/", async context =>
-                {
-                    // request is comming in
+                endpoints.MapDefaultControllerRoute();
 
-                    await context.Response.WriteAsync("Hello World!");
+                //endpoints.MapGet("/", async context =>
+                //{
+                //    // request is comming in
 
-                    //request is going out
-                });
+                //    await context.Response.WriteAsync("Hello World!");
+
+                //    //request is going out
+                //});
             });
         }
     }
