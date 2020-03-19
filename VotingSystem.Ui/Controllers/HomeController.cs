@@ -8,7 +8,7 @@ using VotingSystem.Models;
 
 namespace VotingSystem.Ui.Controllers
 {
-    [Route("[controller]")]
+    [Route("[controller]/[action]")]
     public class HomeController : Controller
     {
         private readonly IVotingPollFactory _pollFactory;

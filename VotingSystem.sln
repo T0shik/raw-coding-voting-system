@@ -23,7 +23,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VotingSystem.Database.Tests
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VotingSystem.Database", "VotingSystem.Database\VotingSystem.Database.csproj", "{B52D5C51-D4A7-4B5F-9A0D-42A31C97300F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VotingSystem.Ui", "VotingSystem.Ui\VotingSystem.Ui.csproj", "{634F2399-2887-4714-95F0-AEEE7DE68F3A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VotingSystem.Ui", "VotingSystem.Ui\VotingSystem.Ui.csproj", "{634F2399-2887-4714-95F0-AEEE7DE68F3A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

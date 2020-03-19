@@ -16,7 +16,8 @@ namespace VotingSystem.Ui
         {
             //services.AddSingleton<Service201>();
             services.AddSingleton<IVotingPollFactory, VotingPollFactory>();
-            services.AddControllers();
+            services.AddControllersWithViews();
+            services.AddRazorPages();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -32,6 +33,8 @@ namespace VotingSystem.Ui
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapRazorPages();
+
                 endpoints.MapDefaultControllerRoute();
 
                 //endpoints.MapGet("/", async context =>
