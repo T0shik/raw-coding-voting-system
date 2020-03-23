@@ -5,7 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\VotingSystem\VotingSystem.csproj" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="3.1.1" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\VotingSystem.Application\VotingSystem.Application.csproj" />
+    <ProjectReference Include="..\VotingSystem.Database\VotingSystem.Database.csproj" />
   </ItemGroup>
 
 </Project>

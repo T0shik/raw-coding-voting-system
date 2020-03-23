@@ -1,29 +1,42 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using VotingSystem.Models;
+using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Linq;
+using VotingSystem.Application;
+using VotingSystem.Database;
 
 namespace VotingSystem.Ui.Pages
 {
     public class IndexModel : PageModel
     {
-        public VotingPoll Poll { get; set; }
         [BindProperty]
         public VotingPollFactory.Request Form { get; set; }
 
-        public void OnGet()
+        public List<VotingPollVM> VotingPolls { get; set; }
+
+        public void OnGet([FromServices] AppDbContext ctx)
         {
-            //var request = new VotingPollFactory.Request
-            //{
-            //       Title = "title",
-            //       Description = "desc",
-            //       Names = new [] { "one", "two" }
-            //};
-            //Poll = pollFactory.Create(request);
+            VotingPolls = ctx.VotingPolls
+                .Select(x => new VotingPollVM
+                {
+                    Id = EF.Property<int>(x, "Id"),
+                    Title = x.Title
+                })
+                .ToList();
         }
-        
-        public void OnPost([FromServices] IVotingPollFactory pollFactory)
+
+        public IActionResult OnPost([FromServices] VotingPollInteractor votingPollInteractor)
         {
-            Poll = pollFactory.Create(Form);
+            votingPollInteractor.CreateVotingPoll(Form);
+
+            return RedirectToPage("/Index");
+        }
+
+        public class VotingPollVM
+        {
+            public int Id { get; set; }
+            public string Title { get; set; }
         }
     }
 }

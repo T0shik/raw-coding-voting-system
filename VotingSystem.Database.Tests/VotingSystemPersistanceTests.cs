@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using VotingSystem.Application;
 using VotingSystem.Database.Tests.Infrastructure;
 using VotingSystem.Models;
 using Xunit;

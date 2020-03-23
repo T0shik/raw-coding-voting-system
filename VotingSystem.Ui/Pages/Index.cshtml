@@ -6,6 +6,11 @@
 
 <h1>Razor index page</h1>
 
+@foreach(var poll in Model.VotingPolls)
+{
+    <a asp-page="/Poll" asp-route-id="@poll.Id">@poll.Title</a>
+}
+
 <form method="post">
     <input asp-for="Form.Title" />
     <input asp-for="Form.Description" />
@@ -14,17 +19,3 @@
     <input asp-for="Form.Names[2]" />
     <button type="submit">Submit</button>
 </form>
-
-@if(Model.Poll != null)
-{
-    <h1>Razor index page</h1>
-    
-    <h2>@Model.Poll.Title</h2>
-    
-    <h2>@Model.Poll.Description</h2>
-    
-    foreach (var counter in Model.Poll.Counters)
-    {
-        <p>@counter.Name - @counter.Count</p>
-    }
-}
