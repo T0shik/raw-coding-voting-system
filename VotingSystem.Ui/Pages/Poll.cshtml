@@ -11,5 +11,10 @@
         @foreach(var counter in Model.Statistics.Counters)
         {
             <p>@counter.Name - @counter.Count - @counter.Percent</p>
+            <form method="post">
+                @Html.AntiForgeryToken()
+                <input type="hidden" name="counterId" value="@counter.Id" />
+                <button type="submit">Vote</button>
+            </form>
         }
     </div>

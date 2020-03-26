@@ -18,6 +18,9 @@ namespace VotingSystem.Ui
     {
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAuthentication("Cookie")
+                .AddCookie("Cookie");
+
             services.AddDbContext<AppDbContext>(options => {
                 options.UseInMemoryDatabase("Database");
             });
@@ -42,6 +45,10 @@ namespace VotingSystem.Ui
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseAuthentication();
+
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {

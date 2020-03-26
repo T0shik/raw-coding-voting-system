@@ -8,9 +8,17 @@ namespace VotingSystem.Tests
 {
     public class CounterManagerTests
     {
+        public const int CounterId = 1;
         public const string CounterName = "Counter Name";
-        public Counter _counter = new Counter { Name = CounterName, Count = 5 };
-        
+        public Counter _counter = new Counter { Id = CounterId, Name = CounterName, Count = 5 };
+
+        [Fact]
+        public void GetStatistics_IncludesCounterId()
+        {
+            var statistics = new CounterManager().GetStatistics(new[] { _counter }).First();
+            Equal(CounterId, statistics.Id);
+        }
+
         [Fact]
         public void GetStatistics_IncludesCounterName()
         {

@@ -1,0 +1,11 @@
+﻿@page
+@model VotingSystem.Ui.Pages.LoginModel
+@{
+}
+
+
+    <form  method="post">
+        @Html.AntiForgeryToken()
+        <input type="email" name="email" />
+        <button type="submit">Enter</button>
+    </form>

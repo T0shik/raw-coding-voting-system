@@ -24,6 +24,7 @@ namespace VotingSystem.Database
                     Description = x.Description,
                     Counters = x.Counters.Select(y => new Counter
                     {
+                        Id = y.Id,
                         Name = y.Name,
                         Count = y.Votes.Count
                     }).ToList()
