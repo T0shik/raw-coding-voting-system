@@ -1,7 +1,6 @@
-﻿using VotingSystem.Application;
-using VotingSystem.Models;
+﻿using VotingSystem.Models;
 
-namespace VotingSystem.Applicaiton
+namespace VotingSystem.Application
 {
     public class VotingInteractor
     {

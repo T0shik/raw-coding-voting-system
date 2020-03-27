@@ -5,7 +5,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using VotingSystem.Applicaiton;
+using VotingSystem.Application;
 using VotingSystem.Models;
 
 namespace VotingSystem.Ui.Pages

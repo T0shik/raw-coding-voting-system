@@ -1,6 +1,6 @@
 ﻿using VotingSystem.Application;
 
-namespace VotingSystem.Applicaiton
+namespace VotingSystem.Application
 {
     public class StatisticsInteractor
     {

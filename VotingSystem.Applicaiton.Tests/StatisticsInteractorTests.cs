@@ -8,7 +8,7 @@ using VotingSystem.Application;
 using VotingSystem.Models;
 using Xunit;
 
-namespace VotingSystem.Applicaiton.Tests
+namespace VotingSystem.Application.Tests
 {
     public class StatisticsInteractorTests
     {

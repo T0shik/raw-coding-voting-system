@@ -25,6 +25,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VotingSystem.Database", "Vo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VotingSystem.Ui", "VotingSystem.Ui\VotingSystem.Ui.csproj", "{634F2399-2887-4714-95F0-AEEE7DE68F3A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VotingSystem.Integration.Tests", "VotingSystem.Integration.Tests\VotingSystem.Integration.Tests.csproj", "{BAC4A357-30F5-469F-A01C-4ED4D74D0AC5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -67,6 +69,10 @@ Global
 		{634F2399-2887-4714-95F0-AEEE7DE68F3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{634F2399-2887-4714-95F0-AEEE7DE68F3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{634F2399-2887-4714-95F0-AEEE7DE68F3A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BAC4A357-30F5-469F-A01C-4ED4D74D0AC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BAC4A357-30F5-469F-A01C-4ED4D74D0AC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BAC4A357-30F5-469F-A01C-4ED4D74D0AC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BAC4A357-30F5-469F-A01C-4ED4D74D0AC5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -79,6 +85,7 @@ Global
 		{BC59E9E8-55FA-4A74-B019-FE2ECFBB306A} = {A9E25AFE-C226-4EAE-BB13-91778F28B4D3}
 		{B52D5C51-D4A7-4B5F-9A0D-42A31C97300F} = {D925054C-D483-4D95-AB0B-630DA117ABF0}
 		{634F2399-2887-4714-95F0-AEEE7DE68F3A} = {D925054C-D483-4D95-AB0B-630DA117ABF0}
+		{BAC4A357-30F5-469F-A01C-4ED4D74D0AC5} = {A9E25AFE-C226-4EAE-BB13-91778F28B4D3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B4451F26-DC7F-47A8-B95E-07243B095D4D}
