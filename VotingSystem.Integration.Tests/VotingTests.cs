@@ -43,12 +43,7 @@ namespace VotingSystem.Integration.Tests
 
             _votingInteractor.Vote(new Vote { UserId = "user", CounterId = 1 });
 
-            var vote = _ctx.Votes.Single();
-            Assert.Equal("user", vote.UserId);
-            Assert.Equal(1, vote.CounterId);
-            
-            var counter = _ctx.Counters.Include(x => x.Votes).First(x => x.Id == 1);
-            Assert.Single(counter.Votes);
+            AssertVotedForCounter(_ctx, "user", 1);
         }
 
         [Fact]
@@ -63,11 +58,16 @@ namespace VotingSystem.Integration.Tests
 
             _votingInteractor.Vote(new Vote { UserId = "user", CounterId = 1 });
 
-            var vote = _ctx.Votes.Single();
-            Assert.Equal("user", vote.UserId);
-            Assert.Equal(1, vote.CounterId);
+            AssertVotedForCounter(_ctx, "user", 1);
+        }
 
-            var counter = _ctx.Counters.Include(x => x.Votes).First(x => x.Id == 1);
+        public static void AssertVotedForCounter(AppDbContext ctx, string userId, int counterId)
+        {
+            var vote = ctx.Votes.Single();
+            Assert.Equal(userId, vote.UserId);
+            Assert.Equal(counterId, vote.CounterId);
+
+            var counter = ctx.Counters.Include(x => x.Votes).First(x => x.Id == counterId);
             Assert.Single(counter.Votes);
         }
     }
