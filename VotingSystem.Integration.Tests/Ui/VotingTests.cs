@@ -1,93 +1,34 @@
-﻿using HtmlAgilityPack;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Mvc.Testing;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Security.Claims;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
-using VotingSystem.Database;
+using VotingSystem.Integration.Tests.Fixtures;
 using VotingSystem.Integration.Tests.Infrastructure;
-using VotingSystem.Models;
-using VotingSystem.Ui;
 using Xunit;
 using BaseVotingTests = VotingSystem.Integration.Tests.VotingTests;
 
 namespace VotingSystem.Integration.Tests.Ui
 {
-    public class VotingTests : IClassFixture<WebApplicationFactory<VotingSystem.Ui.Startup>>
+    public class VotingTests : IClassFixture<VotingFixture>
     {
-        private readonly WebApplicationFactory<Startup> _factory;
+        private readonly VotingFixture _factory;
 
-        public VotingTests(WebApplicationFactory<VotingSystem.Ui.Startup> factory)
+        public VotingTests(VotingFixture factory)
         {
             _factory = factory;
-        }
-
-        public void ActionDatabase(Action<AppDbContext> action)
-        {
-            using (var scope = _factory.Services.CreateScope())
-            {
-                var ctx = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-                action(ctx);
-            }
         }
 
         [Fact]
         public async Task OnGet()
         {
-            var client = _factory
-                .WithWebHostBuilder(builder =>
-                {
-                    builder.ConfigureServices(services =>
-                    {
-                        services.AddAuthentication("Test")
-                            .AddScheme<AuthenticationSchemeOptions, AuthMock>("Test", _ => { });
-
-                        services.AddAntiforgery(setup =>
-                        {
-                            setup.Cookie.Name = "test_csrf_cookie";
-                            setup.FormFieldName = "test_csrf_field";
-                        });
-                    });
-                })
-                .CreateClient();
-            ActionDatabase(ctx =>
-            {
-                ctx.VotingPolls.Add(new VotingPoll
-                {
-                    Title = "title",
-                    Description = "desc",
-                    Counters = new List<Counter> {
-                        new Counter { Name = "One" },
-                        new Counter { Name = "Two" }
-                    }
-                });
-                ctx.SaveChanges();
-            });
+            var client = _factory.CreateClient();
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Test");
-            using (var scope = _factory.Services.CreateScope())
-            {
-                var ctx = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-                ctx.VotingPolls.Add(new VotingPoll
-                {
-                    Title = "title",
-                    Description = "desc",
-                    Counters = new List<Counter> {
-                        new Counter { Name = "One" },
-                        new Counter { Name = "Two" }
-                    }
-                });
-                ctx.SaveChanges();
-            }
             var pollPage = await client.GetAsync("/Poll/1");
             var pollHtml = await pollPage.Content.ReadAsStringAsync();
 
@@ -103,7 +44,7 @@ namespace VotingSystem.Integration.Tests.Ui
             var response = await client.SendAsync(request);
 
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
-            ActionDatabase(ctx =>
+            DbContextUtils.ActionDatabase(_factory.Services, ctx =>
             {
                 BaseVotingTests.AssertVotedForCounter(ctx, "test@test.com", 1);
             });
